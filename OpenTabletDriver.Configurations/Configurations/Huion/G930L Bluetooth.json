@@ -1,0 +1,38 @@
+{
+  "Name": "Huion G930L Bluetooth",
+  "Specifications": {
+    "Digitizer": {
+      "Width": 345.44,
+      "Height": 215.9,
+      "MaxX": 32767,
+      "MaxY": 32767
+    },
+    "Pen": {
+      "MaxPressure": 8191,
+      "ButtonCount": 2
+    },
+    "AuxiliaryButtons": {
+      "ButtonCount": 6
+    }
+  },
+  "DigitizerIdentifiers": [
+    {
+      "VendorID": 9580,
+      "ProductID": 33361,
+      "InputReportLength": 10,
+      "ReportParser": "OpenTabletDriver.Configurations.Parsers.Huion.GianoBluetoothReportParser"
+    }
+  ],
+  "AuxiliaryDeviceIdentifiers": [
+    {
+      "VendorID": 9580,
+      "ProductID": 33361,
+      "InputReportLength": 9,
+      "ReportParser": "OpenTabletDriver.Configurations.Parsers.Huion.GianoBluetoothAuxReportParser"
+    }
+  ],
+  "Attributes": {
+    "libinputoverride": "1",
+    "SkipTests": "LPI_DIGITIZER_X,LPI_DIGITIZER_Y,LPI_SAME_ACROSS_AXES"
+  }
+}

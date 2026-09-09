@@ -23,6 +23,7 @@
 | Genius G-Pen 560                   |     Supported     | Soft-buttons are bindable as aux buttons.
 | Huion 1060 Plus                    |     Supported     |
 | Huion G930L                        |     Supported     |
+| Huion G930L Bluetooth              |     Supported     | HOGP PID 0x8251. Pad keys are HOGP HID-keyboard chords, bound as 6 aux buttons. |
 | Huion GT-191 V2                    |     Supported     |
 | Huion GT-220 V2                    |     Supported     |
 | Huion GT-220 V2 (2048)             |     Supported     |
