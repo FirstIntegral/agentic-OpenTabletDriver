@@ -40,3 +40,13 @@ jobs:
           VERBOSE: y
         run: |
           ./tests/test_tabletconfigs_present_in_tabletsmd.sh
+
+  test_generate_rules_hogp:
+    runs-on: ubuntu-latest
+    name: Test generate-rules.sh Bluetooth HOGP KERNELS
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Assert G930L BLE udev lines
+        run: |
+          ./tests/test_generate_rules_hogp.sh

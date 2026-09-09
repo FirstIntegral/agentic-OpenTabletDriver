@@ -61,12 +61,17 @@ while read s; do
 
   vid=$(tohex $vid)
   pid=$(tohex $pid)
+  # HID parent KERNELS uses uppercase VID:PID (Bluetooth HOGP / uhid has no USB idVendor).
+  vid_hid=$(printf '%s' "$vid" | tr 'a-f' 'A-F')
+  pid_hid=$(printf '%s' "$pid" | tr 'a-f' 'A-F')
 
   echo \# $(echo $names | sed 's/,/\n# /g')
   echo KERNEL==\"hidraw*\", ATTRS{idVendor}==\"$vid\", ATTRS{idProduct}==\"$pid\", TAG+=\"uaccess\", TAG+=\"udev-acl\"
+  echo KERNEL==\"hidraw*\", KERNELS==\"0005:${vid_hid}:${pid_hid}.*\", TAG+=\"uaccess\", TAG+=\"udev-acl\"
   echo SUBSYSTEM==\"usb\", ATTRS{idVendor}==\"$vid\", ATTRS{idProduct}==\"$pid\", TAG+=\"uaccess\", TAG+=\"udev-acl\"
 
   if [[ $libinput > 0 ]]; then
     echo SUBSYSTEM==\"input\", ATTRS{idVendor}==\"$vid\", ATTRS{idProduct}==\"$pid\", ENV{LIBINPUT_IGNORE_DEVICE}=\"$libinput\"
+    echo SUBSYSTEM==\"input\", ATTRS{id/vendor}==\"$vid\", ATTRS{id/product}==\"$pid\", ENV{LIBINPUT_IGNORE_DEVICE}=\"$libinput\"
   fi
 done <<< $configs_arr
