@@ -1,5 +1,3 @@
-[![Actions Status](https://github.com/OpenTabletDriver/OpenTabletDriver/workflows/.NET%20Core/badge.svg)](https://github.com/OpenTabletDriver/OpenTabletDriver/actions) [![CodeFactor](https://www.codefactor.io/repository/github/OpenTabletDriver/OpenTabletDriver/badge/master)](https://www.codefactor.io/repository/github/OpenTabletDriver/OpenTabletDriver/overview/master) [![Total Download Count](https://img.shields.io/github/downloads/OpenTabletDriver/OpenTabletDriver/total.svg)](https://github.com/OpenTabletDriver/OpenTabletDriver/releases/latest)
-
 # OpenTabletDriver
 
 [English](../README.md) | [한국어](README_KO.md) | [Español](README_ES.md) | Русский | [简体中文](README_CN.md) | [Français](README_FR.md) | [Deutsch](README_DE.md)
@@ -14,7 +12,7 @@ OpenTabletDriver — кроссплатформенный драйвер с от
 
 # Поддерживаемые планшеты
 
-Статус поддержки различных моделей можно найти по [этой ссылке](https://opentabletdriver.net/Tablets).
+Статус поддержки различных моделей можно найти по [этой ссылке](../TABLETS.md).
 
 Возможные типы статуса поддержки:
 
@@ -28,9 +26,9 @@ OpenTabletDriver — кроссплатформенный драйвер с от
 
 # Установка
 
-- [Windows](https://opentabletdriver.net/Wiki/Install/Windows)
-- [Linux](https://opentabletdriver.net/Wiki/Install/Linux)
-- [MacOS](https://opentabletdriver.net/Wiki/Install/MacOS)
+- [Windows](../README.md#building-opentabletdriver-from-source)
+- [Linux](../README.md#building-opentabletdriver-from-source)
+- [MacOS](../README.md#building-opentabletdriver-from-source)
 
 # Запуск и использование OpenTabletDriver
 
@@ -92,9 +90,3 @@ OpenTabletDriver работает в двух процессах, взаимод
   - Фильтры
   - Режимы вывода
   - Инструменты
-
-# Помощь в разработке OpenTabletDriver
-
-Если вам хочется помочь с разработкой драйвера, то актуальные проблемы можно найти [здесь](https://github.com/OpenTabletDriver/OpenTabletDriver/issues).
-
-Если у вас возникли проблемы, появились пожелания или предложения, откройте [новый тикет](https://github.com/OpenTabletDriver/OpenTabletDriver/issues/new/choose).

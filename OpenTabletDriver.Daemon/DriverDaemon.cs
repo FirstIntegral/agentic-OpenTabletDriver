@@ -70,8 +70,6 @@ namespace OpenTabletDriver.Daemon
                     PluginPlatform.MacOS => "MacOS",
                     _ => null
                 };
-                var wikiUrl = $"https://opentabletdriver.net/Wiki/FAQ/{os}";
-
                 var message = new StringBuilder();
                 message.Append($"'{driverInfo.Name}' driver is detected.");
 
@@ -86,7 +84,7 @@ namespace OpenTabletDriver.Daemon
                 message.Append($" Processes found: [" + string.Join(", ", processStrings) + "].");
 
                 if (os != null)
-                    message.Append($" If any problems arise, visit '{wikiUrl}'.");
+                    message.Append(" If any problems arise, see README.md in this repository.");
 
                 Log.WriteNotify("Detect", message.ToString(), LogLevel.Warning);
             }

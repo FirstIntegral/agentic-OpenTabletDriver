@@ -1,5 +1,3 @@
-[![Actions Status](https://github.com/OpenTabletDriver/OpenTabletDriver/workflows/.NET%20Core/badge.svg)](https://github.com/OpenTabletDriver/OpenTabletDriver/actions) [![CodeFactor](https://www.codefactor.io/repository/github/OpenTabletDriver/OpenTabletDriver/badge/master)](https://www.codefactor.io/repository/github/OpenTabletDriver/OpenTabletDriver/overview/master) [![Total Download Count](https://img.shields.io/github/downloads/OpenTabletDriver/OpenTabletDriver/total.svg)](https://github.com/OpenTabletDriver/OpenTabletDriver/releases/latest)
-
 # OpenTabletDriver
 
 [English](../README.md) | 한국어 | [Español](README_ES.md) | [Русский](README_RU.md) | [简体中文](README_CN.md) | [Français](README_FR.md) | [Deutsch](README_DE.md)
@@ -16,13 +14,13 @@ OpenTabletDriver는 관리자 권한 없이 여러 플랫폼에서 작동하는 
 
 OpenTabletDriver에서 지원하거나, 아직 테스트가 부족하거나, 아니면 지원 예정인 타블렛들의 목록은 여기서 확인하실 수 있습니다. 각 플랫폼에 대해 자주 발생하는 문제에 대한 해결책은 위키를 찾아보세요.
 
-- [지원하는 타블렛](https://opentabletdriver.net/Tablets)
+- [지원하는 타블렛](../TABLETS.md)
 
 # 설치
 
-- [Windows](https://opentabletdriver.net/Wiki/Install/Windows)
-- [Linux](https://opentabletdriver.net/Wiki/Install/Linux)
-- [MacOS](https://opentabletdriver.net/Wiki/Install/MacOS)
+- [Windows](../README.md#building-opentabletdriver-from-source)
+- [Linux](../README.md#building-opentabletdriver-from-source)
+- [MacOS](../README.md#building-opentabletdriver-from-source)
 
 # OpenTabletDriver 실행하기
 
@@ -84,9 +82,3 @@ OpenTabletDriver를 빌드하기 위해 필요한 것들은 모든 플랫폼에�
   - 필터
   - 출력 모드
   - 도구
-
-# OpenTabletDriver에 기여하기
-
-OpenTabletDriver에 기여하고 싶으시다면, [이슈 트래커](https://github.com/OpenTabletDriver/OpenTabletDriver/issues)를 확인해보세요.
-
-문제가 있으시거나 제안하실 게 있으시면, [이슈 티켓을 열어주세요](https://github.com/OpenTabletDriver/OpenTabletDriver/issues/new/choose).

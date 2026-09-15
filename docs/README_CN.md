@@ -1,5 +1,3 @@
-[![GitHub Actions Status](https://github.com/OpenTabletDriver/OpenTabletDriver/actions/workflows/dotnet.yml/badge.svg)](https://github.com/OpenTabletDriver/OpenTabletDriver/actions/workflows/dotnet.yml) [![Total Download Count](https://img.shields.io/github/downloads/OpenTabletDriver/OpenTabletDriver/total.svg)](https://github.com/OpenTabletDriver/OpenTabletDriver/releases/latest)
-
 # OpenTabletDriver
 
 [English](../README.md) | [한국어](README_KO.md) | [Español](README_ES.md) | [Русский](README_RU.md) | 简体中文 | [Français](README_FR.md) | [Deutsch](README_DE.md)
@@ -17,13 +15,13 @@ OpenTabletDriver 是一款开源、跨平台、工作在用户模式（用户态
 
 所有受支持的数位板都可以在这里看到。
 
-- [数位板支持](https://opentabletdriver.net/Tablets)
+- [数位板支持](../TABLETS.md)
 
 # 安装方法
 
-- [Windows](https://opentabletdriver.net/Wiki/Install/Windows)
-- [Linux](https://opentabletdriver.net/Wiki/Install/Linux)
-- [MacOS](https://opentabletdriver.net/Wiki/Install/MacOS)
+- [Windows](../README.md#building-opentabletdriver-from-source)
+- [Linux](../README.md#building-opentabletdriver-from-source)
+- [MacOS](../README.md#building-opentabletdriver-from-source)
 
 # 运行 OpenTabletDriver
 
@@ -121,7 +119,7 @@ OpenTabletDriver 由两个独立进程协同工作：守护进程`OpenTabletDriv
   - 从可见的 HID 设备中生成配置文件
 - 插件
   - 插件管理器 （通过
-    [插件仓库](https://github.com/OpenTabletDriver/Plugin-Repository)）
+    [插件仓库](https://github.com/FirstIntegral/agentic-OpenTabletDriver)）
   - 过滤器，包括异步过滤器 （如插值器）
   - 输出模式
 - 设备调试工具
@@ -132,26 +130,3 @@ OpenTabletDriver 由两个独立进程协同工作：守护进程`OpenTabletDriv
 - 供应商驱动区域转换
   - 支持转换您的 Wacom / XP-Pen / Huion / Gaomon / VEIKK 区域
 - 为低规格或无头系统提供独立的守护进程
-
-# 向 OpenTabletDriver 贡献
-
-若您希望为 OpenTabletDriver 做出贡献，请查看[议题追踪器](https://github.com/OpenTabletDriver/OpenTabletDriver/issues)。
-创建拉取请求（PR）时，请遵循我们的 [贡献指南](../CONTRIBUTING.md)。
-如果您有任何**问题或建议**，请[创建新议题](https://github.com/OpenTabletDriver/OpenTabletDriver/issues/new/choose)，填写模板并附上相关信息。
-我们欢迎bug报告以及添加对新数位板的支持。
-通常，添加对新数位板的支持相当简单。
-
-有关 OpenTabletDriver 包的议题（issue）与拉取请求（PR），请查看[此仓库](https://github.com/OpenTabletDriver/OpenTabletDriver.Packaging)。
-有关 OpenTabletDriver [网页](https://opentabletdriver.net)的议题（issue）与拉取请求（PR），请查看[此仓库](https://github.com/OpenTabletDriver/opentabletdriver.github.io)。
-
-### 添加对新数位板的支持
-
-如果您想要添加对新数位板的支持，创建一个议题（issue）或加入我们的
-[discord](https://discord.gg/9bcMaPkVAR) 来寻求帮助。（*我们更倾向通过 discord 来添加对新数位板的支持*.）
-
-通常需要您协助完成一些步骤。
-例如：使用内置数位板调试工具（Tablet Debugger），来测试数位板的功能（数位板快捷键，笔身按钮，压感笔尖，等等）。
-我们会发送给您不同的配置文件来进行尝试。
-
-当然也欢迎您提交拉取请求（PR）来自行适配，如果您对其所涉及的领域很有把握的话。
-通常来讲，这一过程相对简单，尤其是如果我们已经适配相同制造商的其它型号数位板时。

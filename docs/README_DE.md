@@ -1,5 +1,3 @@
-[![Actions Status](https://github.com/OpenTabletDriver/OpenTabletDriver/workflows/.NET%20Core/badge.svg)](https://github.com/OpenTabletDriver/OpenTabletDriver/actions) [![CodeFactor](https://www.codefactor.io/repository/github/OpenTabletDriver/OpenTabletDriver/badge/master)](https://www.codefactor.io/repository/github/OpenTabletDriver/OpenTabletDriver/overview/master) [![Total Download Count](https://img.shields.io/github/downloads/OpenTabletDriver/OpenTabletDriver/total.svg)](https://github.com/OpenTabletDriver/OpenTabletDriver/releases/latest)
-
 # OpenTabletDriver
 
 [English](../README.md) | [한국어](README_KO.md) | [Español](README_ES.md) | [Русский](README_RU.md) | [简体中文](README_CN.md) | [Français](README_FR.md) | Deutsch
@@ -16,13 +14,13 @@ OpenTabletDriver ist ein Open-Source, platformübergreifender, Benutzermodus Tab
 
 Der Status aller unterstützten, ungestesteten und zur Ünterstützung geplanten Tablets kann hier eingesehen werden. Häufige Fehler und deren Lösungen sind auf den Wikis der jeweiligen Platform zu finden.
 
-- [Unterstützte Tablets](https://opentabletdriver.net/Tablets)
+- [Unterstützte Tablets](../TABLETS.md)
 
 # Installation
 
-- [Windows](https://opentabletdriver.net/Wiki/Install/Windows)
-- [Linux](https://opentabletdriver.net/Wiki/Install/Linux)
-- [MacOS](https://opentabletdriver.net/Wiki/Install/MacOS)
+- [Windows](../README.md#building-opentabletdriver-from-source)
+- [Linux](../README.md#building-opentabletdriver-from-source)
+- [MacOS](../README.md#building-opentabletdriver-from-source)
 
 # OpenTabletDriver ausführen
 
@@ -103,32 +101,3 @@ Keine weiteren Abhängigkeiten.
   - Filter
   - Ausgabemodi
   - Werkzeuge
-
-# Zu OpenTabletDriver beitragen
-
-Wenn Sie zu OpenTabletDriver beitragen wollen, besuchen Sie den [issue
-tracker](https://github.com/OpenTabletDriver/OpenTabletDriver/issues). Wenn Sie
-ein Pull-Request erstellen wollen, folgen Sie den Richtlinien unter [Beitragsrichtlinien](https://github.com/OpenTabletDriver/OpenTabletDriver/blob/master/CONTRIBUTING.md).
-
-Wenn Sie Probleme oder Vorschläge haben, [Erstellen Sie ein issue
-ticket](https://github.com/OpenTabletDriver/OpenTabletDriver/issues/new/choose)
-und füllen Sie die Vorlage mit relevanten Informationen aus. Bug-Reports sowie
-neue Tablets zum unterstützen sind wilkommen. In den meisten
-Fällen ist es relativ einfach, neue Tablets zu unterstützen.
-
-### Neue Tablets unterstützen
-
-Wenn sie wollen, dass wir ein neues Tablet unterstützen, erstellen Sie eine neue issue auf GitHub
-oder treten Sie unserem [Discord Server](https://discord.gg/9bcMaPkVAR) bei und fragen Sie nach Hilfe.
-*Wir bevorzugen es generell, Unterstützng neuer Tablets wegen der einfacheren Kommunikation auf Discord durchzuführen*.
-
-Sie werden einige Dinge tun müssen, wie das Aufnehmen von gesendeten Tabetdaten mithilfe
-des eingebauten Tablet-Debuggers, testen von Funktionen des Tablets
-(Zusatztasten, Stifttasten, Stiftdruck, etc.) mit verschiedenen Konfigurationsdateien,
-die wir Ihnen senden.
-
-Sie können auch gerne ein Pull-Request erstellen und Überstützung selbst hinzufügen,
-wenn Sie ein gutes Verständnis der benötigten Grundlagen haben.
-
-Normalerweise ist dieser Prozess ziemlich einfach, besonders wenn es
-sich um ein Tablet eines bereits unterstützten Herstellers handelt.

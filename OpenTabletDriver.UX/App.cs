@@ -139,14 +139,14 @@ namespace OpenTabletDriver.UX
 
         public static App Current { get; } = new App();
 
-        public const string WikiUrl = "https://opentabletdriver.net/Wiki";
+        public const string WikiUrl = "https://github.com/FirstIntegral/agentic-OpenTabletDriver/blob/main/FORK.md";
         public static readonly string Version = Assembly.GetEntryAssembly()!.GetCustomAttribute<AssemblyInformationalVersionAttribute>()!.InformationalVersion;
         public static readonly Version AssemblyVersion = Assembly.GetExecutingAssembly().GetName().Version!;
 
         public static DaemonRpcClient Driver { get; } = new DaemonRpcClient("OpenTabletDriver.Daemon");
         public static Bitmap Logo { get; } = new Bitmap(Assembly.GetExecutingAssembly().GetManifestResourceStream("OpenTabletDriver.UX.Assets.otd.png")!);
 
-        public static Uri Website { get; } = new Uri(@"https://github.com/OpenTabletDriver/OpenTabletDriver");
+        public static Uri Website { get; } = new Uri(@"https://github.com/FirstIntegral/agentic-OpenTabletDriver");
         public static string License { get; } = new StreamReader(Assembly.GetExecutingAssembly().GetManifestResourceStream("OpenTabletDriver.UX.LICENSE")!).ReadToEnd();
 
         private Settings? settings;

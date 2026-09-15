@@ -1,8 +1,4 @@
-[![GitHub Actions Status](https://github.com/OpenTabletDriver/OpenTabletDriver/actions/workflows/dotnet.yml/badge.svg)](https://github.com/OpenTabletDriver/OpenTabletDriver/actions/workflows/dotnet.yml) [![Total Download Count](https://img.shields.io/github/downloads/OpenTabletDriver/OpenTabletDriver/total.svg)](https://github.com/OpenTabletDriver/OpenTabletDriver/releases/latest)
-
-> **This is [agentic-OpenTabletDriver](https://github.com/FirstIntegral/agentic-OpenTabletDriver)** (`FirstIntegral`), not [upstream OpenTabletDriver](https://github.com/OpenTabletDriver/OpenTabletDriver).
-> Extra work here: Linux Bluetooth HOGP hidraw enumeration + Huion Inspiroy Giano **G930L over BLE**.
-> Details: **[FORK.md](FORK.md)**. A fork is a separate repo — nothing here is applied to upstream unless a pull request is opened and merged (this work is not submitted).
+> **[agentic-OpenTabletDriver](https://github.com/FirstIntegral/agentic-OpenTabletDriver)** — personal fork. See **[FORK.md](FORK.md)**.
 
 # OpenTabletDriver
 
@@ -18,19 +14,11 @@ OpenTabletDriver is an open source, cross platform, user mode tablet driver. The
 
 # Supported Tablets
 
-The status of all supported tablets can be seen here.
-
-- [Supported Tablets](https://opentabletdriver.net/Tablets)
+See [TABLETS.md](TABLETS.md) in this repository.
 
 # Installation
 
-- [Windows](https://opentabletdriver.net/Wiki/Install/Windows)
-- [Linux](https://opentabletdriver.net/Wiki/Install/Linux)
-- [MacOS](https://opentabletdriver.net/Wiki/Install/MacOS)
-
-# Troubleshooting
-
-Please see our [website wiki](https://opentabletdriver.net/Wiki) for common issues and other quirks.
+Build from this tree (below). This fork is not the packaged upstream releases.
 
 # Running OpenTabletDriver binaries
 
@@ -136,8 +124,7 @@ As of [MacOS 11](https://developer.apple.com/documentation/macos-release-notes/m
   - Persistent settings
   - Presets for quick-access to prior saved settings
 - Plugins
-  - Plugin Manager (via
-    [Plugin-Repository](https://github.com/OpenTabletDriver/Plugin-Repository))
+  - Plugin Manager
   - Filters, including asynchronous filters (interpolators)
   - Output modes
 - Device debugging tools
@@ -149,35 +136,4 @@ As of [MacOS 11](https://developer.apple.com/documentation/macos-release-notes/m
   - Supports transforming your Wacom / XP-Pen / Huion / Gaomon / VEIKK area
 - Standalone daemon, for low-spec or headless systems.
 
-# Contributing to OpenTabletDriver
 
-If you wish to contribute to OpenTabletDriver, check out the [issue
-tracker](https://github.com/OpenTabletDriver/OpenTabletDriver/issues). When
-creating pull requests, follow the guidelines outlined in our [contribution
-guidelines](CONTRIBUTING.md).
-
-If you have any issues or suggestions, [open an issue
-ticket](https://github.com/OpenTabletDriver/OpenTabletDriver/issues/new/choose)
-and fill out the template with relevant information. We welcome both bug
-reports, as well as new tablets to add support for. In many cases adding support
-for a new tablet is quite easy.
-
-For issues and PRs related to OpenTabletDriver's [web page](https://opentabletdriver.net), see the repository [here](https://github.com/OpenTabletDriver/opentabletdriver.github.io).
-
-### Supporting a new tablet
-
-If you'd like us to add support for a new tablet, open an issue or join our
-[discord](https://discord.gg/9bcMaPkVAR) asking for support. *We generally
-prefer that adding support for a tablet be done through discord, due to the
-back-and-forth involved*.
-
-We'll have you do a few things like making a recording of the data sent by your
-tablet using our built-in tablet debugging tool, testing features of the tablet
-(on-tablet buttons, pen buttons, pen pressure, etc) with different configs we'll
-send you to try.
-
-You're also of course welcome to open a PR adding support for it yourself, if
-you have a good grasp on what's involved.
-
-Generally this process is relatively easy, especially if it's for a tablet
-manufacturer we already have support for on other tablets.

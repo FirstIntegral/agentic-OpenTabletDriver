@@ -12,8 +12,8 @@
   <PropertyGroup Label="NuGet Package">
     <Authors>InfinityGhost;X9VoiD</Authors>
     <PackageLicenseExpression>LGPL-3.0-or-later</PackageLicenseExpression>
-    <ProjectUrl>https://www.opentabletdriver.net/</ProjectUrl>
-    <RepositoryUrl>https://www.github.com/OpenTabletDriver/OpenTabletDriver</RepositoryUrl>
+    <ProjectUrl>https://github.com/FirstIntegral/agentic-OpenTabletDriver</ProjectUrl>
+    <RepositoryUrl>https://github.com/FirstIntegral/agentic-OpenTabletDriver</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageOutputPath>..\nupkg</PackageOutputPath>
