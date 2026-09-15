@@ -1,6 +1,6 @@
 [![GitHub Actions Status](https://github.com/OpenTabletDriver/OpenTabletDriver/actions/workflows/dotnet.yml/badge.svg)](https://github.com/OpenTabletDriver/OpenTabletDriver/actions/workflows/dotnet.yml) [![Total Download Count](https://img.shields.io/github/downloads/OpenTabletDriver/OpenTabletDriver/total.svg)](https://github.com/OpenTabletDriver/OpenTabletDriver/releases/latest)
 
-> **This is [FirstIntegral](https://github.com/FirstIntegral/OpenTabletDriver)'s public fork**, not [upstream OpenTabletDriver](https://github.com/OpenTabletDriver/OpenTabletDriver).
+> **This is [agentic-OpenTabletDriver](https://github.com/FirstIntegral/agentic-OpenTabletDriver)** (`FirstIntegral`), not [upstream OpenTabletDriver](https://github.com/OpenTabletDriver/OpenTabletDriver).
 > Extra work here: Linux Bluetooth HOGP hidraw enumeration + Huion Inspiroy Giano **G930L over BLE**.
 > Details: **[FORK.md](FORK.md)**. A fork is a separate repo — nothing here is applied to upstream unless a pull request is opened and merged (this work is not submitted).
 

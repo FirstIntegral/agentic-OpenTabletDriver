@@ -1,10 +1,11 @@
-# This fork (FirstIntegral)
+# agentic-OpenTabletDriver
 
-Public personal fork of [OpenTabletDriver/OpenTabletDriver](https://github.com/OpenTabletDriver/OpenTabletDriver).
+Public personal fork of [OpenTabletDriver/OpenTabletDriver](https://github.com/OpenTabletDriver/OpenTabletDriver),
+published as [FirstIntegral/agentic-OpenTabletDriver](https://github.com/FirstIntegral/agentic-OpenTabletDriver).
 It is **not** an upstream pull request.
 
 A GitHub fork is a **separate repository**. Commits, branches, force-pushes, and
-deletes here (`FirstIntegral/OpenTabletDriver`) do not change upstream. Nothing
+deletes here (`FirstIntegral/agentic-OpenTabletDriver`) do not change upstream. Nothing
 reaches `OpenTabletDriver/OpenTabletDriver` unless someone opens a pull request
 and maintainers merge it. That is not happening for this work.
 
@@ -87,9 +88,15 @@ Xournal++ shortcuts.
 Upstream project: <https://github.com/OpenTabletDriver/OpenTabletDriver>
 
 This fork's `main` is that project's `0.6.x` line plus the commits above. It is
-kept public as a working copy. **No pull requests, no pushes, no issues to
-upstream.** We only **pull** their `0.6.x` updates into `main` and keep our own
-development here.
+kept public as a working copy named **agentic-OpenTabletDriver**. **No pull
+requests, no pushes, no issues to upstream.** We only **pull** their `0.6.x`
+updates into `main` and keep our own development here.
+
+```bash
+git fetch origin
+git merge origin/0.6.x    # into main
+git push fork main        # never git push origin
+```
 
 ## License and name
 
@@ -98,12 +105,5 @@ public copy is allowed. This tree stays under the same license (`LICENSE` kept).
 This file is the prominent notice of what changed. Source is this GitHub repo.
 No claim to be the official OpenTabletDriver project.
 
-The GitHub repo name stays **OpenTabletDriver**. That is normal for a fork
-(`forked from OpenTabletDriver/OpenTabletDriver`). A rename is for a separate
-product identity, not required by LGPL.
-
-```bash
-git fetch origin
-git merge origin/0.6.x    # into main
-git push fork main        # never git push origin
-```
+GitHub name: **`FirstIntegral/agentic-OpenTabletDriver`**. Old
+`FirstIntegral/OpenTabletDriver` URL redirects here.
