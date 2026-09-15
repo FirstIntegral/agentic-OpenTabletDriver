@@ -87,5 +87,12 @@ Xournal++ shortcuts.
 Upstream project: <https://github.com/OpenTabletDriver/OpenTabletDriver>
 
 This fork's `main` is that project's `0.6.x` line plus the commits above. It is
-kept public as a working copy for the G930L Bluetooth path. It is not submitted
-for merge.
+kept public as a working copy. **No pull requests, no pushes, no issues to
+upstream.** We only **pull** their `0.6.x` updates into `main` and keep our own
+development here.
+
+```bash
+git fetch origin
+git merge origin/0.6.x    # into main
+git push fork main        # never git push origin
+```
