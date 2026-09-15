@@ -91,6 +91,17 @@ kept public as a working copy. **No pull requests, no pushes, no issues to
 upstream.** We only **pull** their `0.6.x` updates into `main` and keep our own
 development here.
 
+## License and name
+
+Upstream is **LGPL-3.0-or-later**. Forking, modifying, and running a private or
+public copy is allowed. This tree stays under the same license (`LICENSE` kept).
+This file is the prominent notice of what changed. Source is this GitHub repo.
+No claim to be the official OpenTabletDriver project.
+
+The GitHub repo name stays **OpenTabletDriver**. That is normal for a fork
+(`forked from OpenTabletDriver/OpenTabletDriver`). A rename is for a separate
+product identity, not required by LGPL.
+
 ```bash
 git fetch origin
 git merge origin/0.6.x    # into main
