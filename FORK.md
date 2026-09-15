@@ -8,7 +8,7 @@ deletes here (`FirstIntegral/OpenTabletDriver`) do not change upstream. Nothing
 reaches `OpenTabletDriver/OpenTabletDriver` unless someone opens a pull request
 and maintainers merge it. That is not happening for this work.
 
-Branch with the changes: **`linux-hogp-g930l-bluetooth`** (from upstream `0.6.x`).
+Default branch is **`main`**: upstream `0.6.x` plus the Linux HOGP / G930L Bluetooth work. One branch, no PR-shaped extra.
 
 ## What this fork adds
 
@@ -86,6 +86,6 @@ Xournal++ shortcuts.
 
 Upstream project: <https://github.com/OpenTabletDriver/OpenTabletDriver>
 
-This fork tracks that project's `0.6.x` line plus the two commits above. It is
+This fork's `main` is that project's `0.6.x` line plus the commits above. It is
 kept public as a working copy for the G930L Bluetooth path. It is not submitted
 for merge.
