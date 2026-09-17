@@ -7,6 +7,7 @@ namespace OpenTabletDriver.UX.Gtk
         [STAThread]
         public static void Main(string[] args)
         {
+            App.PlatformSetup = GtkAppTheme.Apply;
             App.Run(Eto.Platforms.Gtk, args);
         }
     }

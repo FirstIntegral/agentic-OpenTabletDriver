@@ -7,7 +7,7 @@ namespace OpenTabletDriver.UX
         protected ChildDialog(Window parentWindow)
         {
             Owner = parentWindow;
-            Title = "OpenTabletDriver";
+            Title = App.ProductName;
             Icon = App.Logo.WithSize(App.Logo.Size);
         }
     }

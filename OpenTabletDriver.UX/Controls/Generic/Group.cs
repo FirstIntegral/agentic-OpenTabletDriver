@@ -23,7 +23,7 @@ namespace OpenTabletDriver.UX.Controls.Generic
 
         private const Orientation DEFAULT_ORIENTATION = Orientation.Vertical;
 
-        protected virtual Padding ContentPadding => SystemInterop.CurrentPlatform == PluginPlatform.Windows ? new Padding(5, 10, 5, 5) : new Padding(5);
+        protected virtual Padding ContentPadding => SystemInterop.CurrentPlatform == PluginPlatform.Windows ? new Padding(5, 10, 5, 5) : new Padding(AppStyle.Space);
 
         protected virtual Color HorizontalBackgroundColor => SystemColors.ControlBackground;
         protected virtual Color VerticalBackgroundColor => SystemColors.WindowBackground;
@@ -80,7 +80,7 @@ namespace OpenTabletDriver.UX.Controls.Generic
                         {
                             VerticalContentAlignment = VerticalAlignment.Stretch,
                             Orientation = Orientation.Horizontal,
-                            Spacing = 5,
+                            Spacing = AppStyle.Space,
                             Padding = ContentPadding,
                             Items =
                             {
@@ -106,7 +106,7 @@ namespace OpenTabletDriver.UX.Controls.Generic
                     {
                         HorizontalContentAlignment = HorizontalAlignment.Stretch,
                         VerticalContentAlignment = VerticalAlignment.Center,
-                        Spacing = 5,
+                        Spacing = AppStyle.Space,
                         Padding = ContentPadding,
                         Items =
                         {
@@ -116,7 +116,7 @@ namespace OpenTabletDriver.UX.Controls.Generic
                                 Control = new Label
                                 {
                                     Text = this.Text,
-                                    Font = SystemFonts.Bold(9)
+                                    Font = SystemFonts.Bold(10)
                                 }
                             },
                             new StackLayoutItem

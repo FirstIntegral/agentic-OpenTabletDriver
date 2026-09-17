@@ -7,6 +7,7 @@ using OpenTabletDriver.Plugin;
 using OpenTabletDriver.Plugin.Output;
 using OpenTabletDriver.Plugin.Tablet;
 using OpenTabletDriver.UX.Controls.Bindings;
+using OpenTabletDriver.UX.Controls.Generic;
 using OpenTabletDriver.UX.Controls.Output;
 
 namespace OpenTabletDriver.UX.Controls
@@ -15,65 +16,29 @@ namespace OpenTabletDriver.UX.Controls
     {
         public ControlPanel()
         {
-            var control = new TabControl();
-
-            control.Pages.Add(new TabPage
+            outputModeEditor = new();
+            filterEditor = new();
+            penBindingEditor = new PenBindingEditor();
+            auxBindingEditor = new AuxiliaryBindingEditor();
+            mouseBindingEditor = new MouseBindingEditor();
+            toolEditor = new();
+            placeholder = new Placeholder
             {
-                Text = "Output",
-                Content = outputModeEditor = new()
-            });
+                Text = "No tablets are detected."
+            };
+            logView = new();
 
-            control.Pages.Add(new TabPage
-            {
-                Text = "Filters",
-                Padding = 5,
-                Content = filterEditor = new()
-            });
+            nav = new SideNav();
+            nav.Add("Output", outputModeEditor);
+            nav.Add("Filters", filterEditor);
+            nav.Add("Pen", penBindingEditor);
+            nav.Add("Auxiliary", auxBindingEditor);
+            nav.Add("Mouse", mouseBindingEditor);
+            nav.Add("Tools", toolEditor);
+            nav.Add("Info", placeholder);
+            nav.Add("Console", logView);
 
-            control.Pages.Add(new TabPage
-            {
-                Text = "Pen Settings",
-                Content = penBindingEditor = new PenBindingEditor()
-            });
-
-            control.Pages.Add(new TabPage
-            {
-                Text = "Auxiliary Settings",
-                Content = auxBindingEditor = new AuxiliaryBindingEditor()
-            });
-
-            control.Pages.Add(new TabPage
-            {
-                ID = "mouse",
-                Text = "Mouse Settings",
-                Content = mouseBindingEditor = new MouseBindingEditor()
-            });
-
-            control.Pages.Add(new TabPage
-            {
-                Text = "Tools",
-                Padding = 5,
-                Content = toolEditor = new()
-            });
-
-            control.Pages.Add(new TabPage
-            {
-                Text = "Info",
-                Padding = 5,
-                Content = placeholder = new Placeholder
-                {
-                    Text = "No tablets are detected."
-                }
-            });
-
-            control.Pages.Add(new TabPage
-            {
-                Text = "Console",
-                Padding = 5,
-                Content = logView = new()
-            });
-
-            this.Content = tabControl = control;
+            Content = nav;
 
             outputModeEditor.ProfileBinding.Bind(ProfileBinding);
             penBindingEditor.ProfileBinding.Bind(ProfileBinding);
@@ -87,20 +52,18 @@ namespace OpenTabletDriver.UX.Controls
             Log.Output += (_, message) => Application.Instance.AsyncInvoke(() =>
             {
                 if (message.Level > LogLevel.Info)
-                {
-                    tabControl.SelectedPage = logView.Parent as TabPage;
-                }
+                    nav.Select(logView);
             });
         }
 
-        private TabControl tabControl;
-        private Placeholder placeholder;
-        private LogView logView;
-        private OutputModeEditor outputModeEditor;
-        private BindingEditor penBindingEditor, auxBindingEditor, mouseBindingEditor;
-        private List<BindingEditor> wheelBindingEditors = [];
-        private PluginSettingStoreCollectionEditor<IPositionedPipelineElement<IDeviceReport>> filterEditor;
-        private PluginSettingStoreCollectionEditor<ITool> toolEditor;
+        private readonly SideNav nav;
+        private readonly Placeholder placeholder;
+        private readonly LogView logView;
+        private readonly OutputModeEditor outputModeEditor;
+        private readonly BindingEditor penBindingEditor, auxBindingEditor, mouseBindingEditor;
+        private readonly List<BindingEditor> wheelBindingEditors = [];
+        private readonly PluginSettingStoreCollectionEditor<IPositionedPipelineElement<IDeviceReport>> filterEditor;
+        private readonly PluginSettingStoreCollectionEditor<ITool> toolEditor;
 
         private Profile? profile;
 
@@ -125,12 +88,9 @@ namespace OpenTabletDriver.UX.Controls
 
             OnTabletChanged(tablet);
 
-            if (Platform.IsMac)
-                tabControl.Pages.Clear();
-
             if (tablet != null)
             {
-                bool switchToOutput = tabControl.SelectedPage == placeholder.Parent;
+                bool switchToOutput = nav.SelectedContent == placeholder;
 
                 SetPageVisibility(placeholder, false);
                 SetPageVisibility(outputModeEditor, true);
@@ -145,7 +105,7 @@ namespace OpenTabletDriver.UX.Controls
                 SetPageVisibility(toolEditor, true);
 
                 if (switchToOutput)
-                    tabControl.SelectedIndex = 0;
+                    nav.Select(outputModeEditor);
             }
             else
             {
@@ -159,12 +119,8 @@ namespace OpenTabletDriver.UX.Controls
                 SetPageVisibility(mouseBindingEditor, false);
                 SetPageVisibility(toolEditor, false);
 
-                if (tabControl.SelectedPage != logView.Parent)
-                {
-                    tabControl.SelectedIndex = Profile == null ?
-                        tabControl.Pages.IndexOf(placeholder.Parent as TabPage) :
-                        0;
-                }
+                if (nav.SelectedContent != logView)
+                    nav.Select(placeholder);
             }
 
             SetPageVisibility(logView, true);
@@ -172,7 +128,6 @@ namespace OpenTabletDriver.UX.Controls
 
         private void OnTabletChanged(TabletReference? tablet)
         {
-            // ensure we have enough wheel binding editors
             int tabletWheels = tablet?.Properties.Specifications.Wheels?.Count ?? 0;
             if (tabletWheels > wheelBindingEditors.Count)
             {
@@ -180,13 +135,8 @@ namespace OpenTabletDriver.UX.Controls
                 {
                     var wheelBindingEditor = new WheelBindingEditor(i);
                     wheelBindingEditor.ProfileBinding.Bind(ProfileBinding);
-                    var pageIndex = tabControl.Pages.IndexOf(mouseBindingEditor.Parent as TabPage);
                     wheelBindingEditors.Add(wheelBindingEditor);
-                    var wheelPage = new TabPage(wheelBindingEditor) { Text = $"Wheel {i + 1} Bindings" };
-                    if (pageIndex >= 0)
-                        tabControl.Pages.Insert(pageIndex, wheelPage);
-                    else
-                        tabControl.Pages.Add(wheelPage);
+                    nav.InsertBefore(mouseBindingEditor, $"Wheel {i + 1}", wheelBindingEditor);
                 }
             }
         }
@@ -207,20 +157,7 @@ namespace OpenTabletDriver.UX.Controls
 
         private void SetPageVisibility(Control control, bool visible)
         {
-            // This works around a bug in Eto.Forms with TabPage visibility
-            // https://github.com/picoe/Eto/issues/1224
-            if (Platform.IsMac)
-            {
-                if (visible)
-                {
-                    var page = control.Parent as TabPage;
-                    tabControl.Pages.Add(page);
-                }
-            }
-            else
-            {
-                control.Parent.Visible = visible;
-            }
+            nav.SetVisible(control, visible);
         }
     }
 }

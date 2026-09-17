@@ -55,6 +55,7 @@ namespace OpenTabletDriver.UX
         private static void RunInternal(string platform, CommandLineOptions options)
         {
             var app = new Application(platform);
+            PlatformSetup?.Invoke();
             var mainForm = new MainForm();
             if (options.StartMinimized)
             {
@@ -117,7 +118,7 @@ namespace OpenTabletDriver.UX
                 Description = "Skip checking for updates"
             };
 
-            var root = new RootCommand("OpenTabletDriver UX")
+            var root = new RootCommand($"{ProductInfo.Name} UX")
             {
                 minimizedOption,
                 skipUpdate
@@ -143,8 +144,13 @@ namespace OpenTabletDriver.UX
         public static readonly string Version = Assembly.GetEntryAssembly()!.GetCustomAttribute<AssemblyInformationalVersionAttribute>()!.InformationalVersion;
         public static readonly Version AssemblyVersion = Assembly.GetExecutingAssembly().GetName().Version!;
 
-        public static DaemonRpcClient Driver { get; } = new DaemonRpcClient("OpenTabletDriver.Daemon");
-        public static Bitmap Logo { get; } = new Bitmap(Assembly.GetExecutingAssembly().GetManifestResourceStream("OpenTabletDriver.UX.Assets.otd.png")!);
+        public const string ProductName = ProductInfo.Name;
+        public static Action? PlatformSetup { get; set; }
+
+        public static DaemonRpcClient Driver { get; } = new DaemonRpcClient(ProductInfo.DaemonPipeName);
+
+        private static Bitmap? logo;
+        public static Bitmap Logo => logo ??= new Bitmap(Assembly.GetExecutingAssembly().GetManifestResourceStream("OpenTabletDriver.UX.Assets.otd.png")!);
 
         public static Uri Website { get; } = new Uri(@"https://github.com/FirstIntegral/agentic-OpenTabletDriver");
         public static string License { get; } = new StreamReader(Assembly.GetExecutingAssembly().GetManifestResourceStream("OpenTabletDriver.UX.LICENSE")!).ReadToEnd();
@@ -156,7 +162,7 @@ namespace OpenTabletDriver.UX
             get => this.settings ?? throw new InvalidOperationException("Settings cannot be null");
         }
 
-        private const string APPNAME = "OpenTabletDriver.UX";
+        private const string APPNAME = ProductInfo.UxAppName;
         public readonly static bool EnableTrayIcon = (PluginPlatform.Windows | PluginPlatform.MacOS).HasFlag(SystemInterop.CurrentPlatform);
         public readonly static bool EnableDaemonWatchdog = (PluginPlatform.Windows | PluginPlatform.MacOS).HasFlag(SystemInterop.CurrentPlatform);
         public static DaemonWatchdog? DaemonWatchdog;

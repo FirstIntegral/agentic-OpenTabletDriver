@@ -39,6 +39,11 @@ namespace OpenTabletDriver.UX
 
             trayIcon?.Indicator.Show();
 
+            detectButton = new Button(async (s, e) => await DetectTablet())
+            {
+                Text = "Detect"
+            };
+
             saveButton = new Button(async (s, e) => await SaveSettings())
             {
                 Text = "Save"
@@ -70,15 +75,15 @@ namespace OpenTabletDriver.UX
                     var message = SystemInterop.CurrentPlatform switch
                     {
                         PluginPlatform.Windows =>
-                            "Connecting to daemon has timed out.\nVerify that OpenTabletDriver.Daemon is running or is in the same folder as OpenTabletDriver.UX\nPress OK to retry",
+                            $"Connecting to daemon has timed out.\nVerify that {ProductInfo.DaemonPipeName} is running or is in the same folder as the UX.\nPress OK to retry",
                         PluginPlatform.Linux =>
                             """
                             Connecting to daemon has timed out.
-                            Verify that OpenTabletDriver.Daemon is running, e.g. by starting the systemd user service (usually 'systemctl --user start opentabletdriver'), or by starting 'otd-daemon'.
+                            Verify that otd-daemon is running, e.g. by starting the systemd user service (usually 'systemctl --user start opentabletdriver').
                             Press OK to retry
                             """,
                         _ =>
-                            "Connecting to daemon has timed out. Verify that OpenTabletDriver.Daemon is running.\nPress OK to retry"
+                            "Connecting to daemon has timed out. Verify that the daemon is running.\nPress OK to retry"
                     };
 
                     var dialogResult = MessageBox.Show(this, message, "Daemon Connection Error",
@@ -103,13 +108,13 @@ namespace OpenTabletDriver.UX
             }
         }
 
-        private const int DEFAULT_CLIENT_WIDTH = 960;
-        private const int DEFAULT_CLIENT_HEIGHT = 760;
+        private const int DEFAULT_CLIENT_WIDTH = AppStyle.DefaultWindowWidth;
+        private const int DEFAULT_CLIENT_HEIGHT = AppStyle.DefaultWindowHeight;
 
         private readonly MenuBar fullMenu;
         private readonly Placeholder placeholder = new()
         {
-            Text = "Connecting to OpenTabletDriver Daemon...",
+            Text = $"Connecting to {App.ProductName} daemon...",
         };
 
         private TrayIcon? trayIcon;
@@ -148,7 +153,7 @@ namespace OpenTabletDriver.UX
 
                     if (regex.IsMatch(programPath))
                     {
-                        MessageBox.Show(this, $"You are running OpenTabletDriver.UX from a zip file.\n\nPlease extract the zip file to a folder then run OpenTabletDriver.UX from there.", "Error", MessageBoxType.Error);
+                        MessageBox.Show(this, $"You are running {App.ProductName} from a zip file.\n\nPlease extract the zip file to a folder then run it from there.", "Error", MessageBoxType.Error);
                         Environment.Exit(1);
                     }
                     break;
@@ -204,7 +209,7 @@ namespace OpenTabletDriver.UX
 
         private static void StartDaemonWatchdog()
         {
-            if (Instance.Exists("OpenTabletDriver.Daemon") || !DaemonWatchdog.CanExecute) return;
+            if (Instance.Exists(ProductInfo.DaemonPipeName) || !DaemonWatchdog.CanExecute) return;
 
             var watchdog = new DaemonWatchdog();
             watchdog.Start();
@@ -219,7 +224,7 @@ namespace OpenTabletDriver.UX
             var aboutCommand = new Command { MenuText = "About...", Shortcut = Keys.F1 };
             aboutCommand.Executed += (sender, e) => App.Current.AboutWindow.Show();
 
-            var wikiUrl = new Command { MenuText = "Open Wiki..." };
+            var wikiUrl = new Command { MenuText = "About this fork..." };
             wikiUrl.Executed += (sender, e) => DesktopInterop.Open(App.WikiUrl);
 
             var menuBar = new MenuBar
@@ -290,7 +295,7 @@ namespace OpenTabletDriver.UX
             var pluginManager = new Command { MenuText = "Open Plugin Manager..." };
             pluginManager.Executed += (sender, e) => App.Current.PluginManagerWindow.Show();
 
-            var wikiUrl = new Command { MenuText = "Open Wiki..." };
+            var wikiUrl = new Command { MenuText = "About this fork..." };
             wikiUrl.Executed += (sender, e) => DesktopInterop.Open(App.WikiUrl);
 
             var showGuide = new Command { MenuText = "Show guide..." };
@@ -378,22 +383,14 @@ namespace OpenTabletDriver.UX
                 AboutItem = aboutCommand
             };
 
-            switch (SystemInterop.CurrentPlatform)
-            {
-                case PluginPlatform.Windows:
-                case PluginPlatform.MacOS:
-                {
-                    menuBar.Items.GetSubmenu("&Help").Items.Add(updater);
-                    break;
-                }
-            }
+            menuBar.Items.GetSubmenu("&Help").Items.Add(updater);
 
             return menuBar;
         }
 
         private void SetTitle(IEnumerable<TabletReference>? tablets = null)
         {
-            string prefix = $"OpenTabletDriver v{App.Version}";
+            string prefix = $"{App.ProductName} v{App.Version}";
             string affix = string.Empty;
 
             if (tablets?.Any() ?? false)
@@ -442,10 +439,11 @@ namespace OpenTabletDriver.UX
                 CommandsControl = new StackLayout
                 {
                     Orientation = Orientation.Horizontal,
-                    HorizontalContentAlignment = HorizontalAlignment.Right,
-                    Spacing = 5,
+                    VerticalContentAlignment = VerticalAlignment.Center,
+                    Spacing = AppStyle.Space,
                     Items =
                     {
+                        detectButton,
                         saveButton,
                         applyButton,
                     }
@@ -463,6 +461,7 @@ namespace OpenTabletDriver.UX
             MatchDaemonVersion();
         });
 
+        private Button detectButton;
         private Button saveButton;
         private Button applyButton;
 
@@ -510,9 +509,9 @@ namespace OpenTabletDriver.UX
         private async Task LoadSettingsDialog()
         {
             var fileDialog = Extensions.OpenFileDialog(
-                "Load OpenTabletDriver settings...",
+                $"Load {App.ProductName} settings...",
                 Eto.EtoEnvironment.GetFolderPath(Eto.EtoSpecialFolder.Documents),
-                [new FileFilter("OpenTabletDriver Settings (*.json)", ".json")]
+                [new FileFilter($"{App.ProductName} Settings (*.json)", ".json")]
             );
 
             switch (fileDialog.ShowDialog(this))
@@ -542,9 +541,9 @@ namespace OpenTabletDriver.UX
         private async Task SaveSettingsDialog()
         {
             var fileDialog = Extensions.SaveFileDialog(
-                "Save OpenTabletDriver settings...",
+                $"Save {App.ProductName} settings...",
                 Eto.EtoEnvironment.GetFolderPath(Eto.EtoSpecialFolder.Documents),
-                [new FileFilter("OpenTabletDriver Settings (*.json)", ".json")],
+                [new FileFilter($"{App.ProductName} Settings (*.json)", ".json")],
                 "opentabletdriver-settings.json"
             );
 
@@ -683,9 +682,9 @@ namespace OpenTabletDriver.UX
         {
             // TODO: this should probably use a modal dialog instead, as presets are only readable from the Preset directory
             var fileDialog = Extensions.SaveFileDialog(
-                "Save OpenTabletDriver settings as preset...",
+                $"Save {App.ProductName} settings as preset...",
                 AppInfo.Current.PresetDirectory,
-                [new FileFilter("OpenTabletDriver Settings (*.json)", ".json")],
+                [new FileFilter($"{App.ProductName} Settings (*.json)", ".json")],
                 "mypreset.json"
             );
 

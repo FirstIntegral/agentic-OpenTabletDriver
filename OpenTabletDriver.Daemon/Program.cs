@@ -42,10 +42,10 @@ namespace OpenTabletDriver.Daemon
 
         static async Task StartDaemon()
         {
-            using var instance = new Instance("OpenTabletDriver.Daemon");
+            using var instance = new Instance(ProductInfo.DaemonPipeName);
             if (instance.AlreadyExists)
             {
-                Console.WriteLine("OpenTabletDriver Daemon is already running.");
+                Console.WriteLine($"{ProductInfo.Name} Daemon is already running.");
                 Thread.Sleep(1000);
                 return;
             }
@@ -128,7 +128,7 @@ namespace OpenTabletDriver.Daemon
 
         private static RpcHost<DriverDaemon> GetRpcHost()
         {
-            var host = new RpcHost<DriverDaemon>("OpenTabletDriver.Daemon");
+            var host = new RpcHost<DriverDaemon>(ProductInfo.DaemonPipeName);
             host.ConnectionStateChanged += (sender, state) =>
                 Log.Write("IPC", $"{(state ? "Connected to" : "Disconnected from")} a client.", LogLevel.Debug);
             return host;
@@ -138,7 +138,7 @@ namespace OpenTabletDriver.Daemon
         {
             var cmdLineOptions = new CommandLineOptions();
 
-            var rootCommand = new RootCommand("OpenTabletDriver")
+            var rootCommand = new RootCommand(ProductInfo.Name)
             {
                 TreatUnmatchedTokensAsErrors = true
             };

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.CommandLine;
 using System.IO;
 using System.Threading.Tasks;
+using OpenTabletDriver.Desktop;
 
 namespace OpenTabletDriver.Console
 {
@@ -22,7 +23,7 @@ namespace OpenTabletDriver.Console
 
         private static RootCommand GenerateRoot()
         {
-            var root = new RootCommand("OpenTabletDriver Console Client");
+            var root = new RootCommand($"{ProductInfo.Name} Console Client");
 
             root.AddCommands(IOCommands);
             root.AddCommands(ActionCommands);

@@ -19,7 +19,7 @@ namespace OpenTabletDriver.UX.Controls.Generic
         {
             base.HorizontalContentAlignment = defaultHorizontalAlignment;
             base.VerticalContentAlignment = defaultVerticalAlignment;
-            base.Spacing = 5;
+            base.Spacing = AppStyle.Space;
         }
 
         private const HorizontalAlignment defaultHorizontalAlignment = HorizontalAlignment.Stretch;

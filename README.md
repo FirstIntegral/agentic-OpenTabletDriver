@@ -1,10 +1,10 @@
 > **[agentic-OpenTabletDriver](https://github.com/FirstIntegral/agentic-OpenTabletDriver)** — personal fork. See **[FORK.md](FORK.md)**.
 
-# OpenTabletDriver
+# agentic-OpenTabletDriver
 
 English | [한국어](docs/README_KO.md) | [Español](docs/README_ES.md) | [Русский](docs/README_RU.md) | [简体中文](docs/README_CN.md) | [Français](docs/README_FR.md) | [Deutsch](docs/README_DE.md)
 
-OpenTabletDriver is an open source, cross platform, user mode tablet driver. The goal of OpenTabletDriver is to be as cross platform as possible with the highest compatibility in an easily configurable graphical user interface.
+agentic-OpenTabletDriver is a personal fork of OpenTabletDriver, an open source, cross platform, user mode tablet driver. The goal of OpenTabletDriver is to be as cross platform as possible with the highest compatibility in an easily configurable graphical user interface.
 
 <p align="middle">
   <img src="https://i.imgur.com/XDYf62e.png" width="410" align="middle"/>

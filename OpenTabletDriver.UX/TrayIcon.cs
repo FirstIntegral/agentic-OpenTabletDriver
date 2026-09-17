@@ -15,7 +15,7 @@ namespace OpenTabletDriver.UX
 
             Indicator = new TrayIndicator
             {
-                Title = "OpenTabletDriver",
+                Title = App.ProductName,
                 Image = App.Logo
             };
 
@@ -91,7 +91,7 @@ namespace OpenTabletDriver.UX
             if (DesktopInterop.CurrentPlatform == PluginPlatform.MacOS)
             {
                 // It's more idiomatic for macOS to include the name here
-                showWindow.Text = "Show OpenTabletDriver";
+                showWindow.Text = $"Show {App.ProductName}";
 
                 // Applications on macOS will keep running even after closing all their windows
                 // Offering a way to quit the app here is more idiomatic

@@ -19,8 +19,8 @@ namespace OpenTabletDriver.UX.Controls.Output
         {
             this.Content = new StackLayout
             {
-                Padding = 5,
-                Spacing = 5,
+                Padding = AppStyle.Space,
+                Spacing = AppStyle.Space,
                 HorizontalContentAlignment = HorizontalAlignment.Stretch,
                 Items =
                 {

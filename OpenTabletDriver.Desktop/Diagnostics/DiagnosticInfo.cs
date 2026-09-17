@@ -9,6 +9,7 @@ using OpenTabletDriver.Plugin;
 using OpenTabletDriver.Plugin.Attributes;
 using OpenTabletDriver.Plugin.Devices;
 using OpenTabletDriver.Plugin.Logging;
+using ProductInfo = OpenTabletDriver.Desktop.ProductInfo;
 
 namespace OpenTabletDriver.Desktop.Diagnostics
 {
@@ -44,7 +45,7 @@ namespace OpenTabletDriver.Desktop.Diagnostics
         {
             string? version = Assembly.GetEntryAssembly()?.GetCustomAttribute<AssemblyInformationalVersionAttribute>()?.InformationalVersion;
             version ??= "<unknown>";
-            return $"OpenTabletDriver v{version}";
+            return $"{ProductInfo.Name} v{version}";
         }
 
         [OnError, UsedImplicitly]

@@ -36,7 +36,7 @@ namespace OpenTabletDriver.UX.Windows
         public AboutWindow()
             : base(Application.Instance.MainForm)
         {
-            Title = "About OpenTabletDriver";
+            Title = $"About {App.ProductName}";
 
             _tabControl = new TabControl();
 
@@ -74,8 +74,12 @@ namespace OpenTabletDriver.UX.Windows
                     },
                     new Label
                     {
-                        Text = "OpenTabletDriver",
+                        Text = App.ProductName,
                         Font = SystemFonts.Bold(LARGE_FONTSIZE),
+                    },
+                    new Label
+                    {
+                        Text = "Personal fork of OpenTabletDriver",
                     },
                     new Label
                     {
@@ -87,7 +91,7 @@ namespace OpenTabletDriver.UX.Windows
                     },
                     new LinkButton
                     {
-                        Text = "OpenTabletDriver Github Repository",
+                        Text = $"{App.ProductName} Github Repository",
                         Command = new Command((_, _) => Application.Instance.Open(App.Website.ToString())),
                     },
                     new CommandLabel
@@ -125,7 +129,7 @@ namespace OpenTabletDriver.UX.Windows
             };
 
             GenerateGenericStackLayoutItems(ref creditsTabContent,
-                $"OpenTabletDriver v{App.Version} Credits",
+                $"{App.ProductName} v{App.Version} Credits",
                 creditsTabContentControl);
 
             return new TabPage(creditsTabContent) { Text = "Credits" };
@@ -149,7 +153,7 @@ namespace OpenTabletDriver.UX.Windows
             };
 
             GenerateGenericStackLayoutItems(ref licenseTabContent,
-                $"OpenTabletDriver v{App.Version} License",
+                $"{App.ProductName} v{App.Version} License",
                 licenseTabContentControl);
 
             return new TabPage(licenseTabContent) { Text = "License" };

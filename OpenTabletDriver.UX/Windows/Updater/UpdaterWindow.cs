@@ -13,7 +13,7 @@ namespace OpenTabletDriver.UX.Windows.Updater
     {
         public UpdaterWindow()
         {
-            this.Title = "OpenTabletDriver Updater";
+            this.Title = $"{App.ProductName} Updater";
             this.ClientSize = new Size(400, 380);
 
             this.Content = new Placeholder
@@ -51,7 +51,7 @@ namespace OpenTabletDriver.UX.Windows.Updater
                         new PaddingSpacerItem(),
                         new Bitmap(App.Logo.WithSize(256, 256)),
                         "An update is available to install",
-                        $"OpenTabletDriver v{updateAvailable.Version}",
+                        $"{App.ProductName} v{updateAvailable.Version}",
                         new PaddingSpacerItem(),
                         new StackLayout()
                         {

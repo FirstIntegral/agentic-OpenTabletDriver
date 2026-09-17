@@ -6,6 +6,12 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup Label="Resources">
+    <EmbeddedResource Include="Assets\app.css">
+      <LogicalName>OpenTabletDriver.UX.Gtk.Assets.app.css</LogicalName>
+    </EmbeddedResource>
+  </ItemGroup>
+
   <ItemGroup Label="NuGet Packages">
     <PackageReference Include="Eto.Platform.Gtk" Version="2.5.11" />
   </ItemGroup>

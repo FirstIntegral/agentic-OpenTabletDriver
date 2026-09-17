@@ -15,7 +15,7 @@ namespace OpenTabletDriver.UX.Controls.Bindings
                 Content = new StackLayout
                 {
                     HorizontalContentAlignment = HorizontalAlignment.Stretch,
-                    Spacing = 5,
+                    Spacing = AppStyle.Space,
                     Items =
                     {
                         new Group

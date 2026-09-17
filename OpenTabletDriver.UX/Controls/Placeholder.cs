@@ -10,12 +10,12 @@ namespace OpenTabletDriver.UX.Controls
         {
             this.Content = new StackLayout
             {
-                Spacing = 5,
+                Spacing = AppStyle.Space,
                 HorizontalContentAlignment = HorizontalAlignment.Center,
                 Items =
                 {
                     new StackLayoutItem(null, true),
-                    new Bitmap(App.Logo.WithSize(256, 256)),
+                    new Bitmap(App.Logo.WithSize(192, 192)),
                     new StackLayoutItem
                     {
                         Control = label = new Label()

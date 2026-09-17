@@ -7,7 +7,7 @@ namespace OpenTabletDriver.Console
 {
     partial class Program
     {
-        public static readonly RpcClient<IDriverDaemon> Driver = new RpcClient<IDriverDaemon>("OpenTabletDriver.Daemon");
+        public static readonly RpcClient<IDriverDaemon> Driver = new RpcClient<IDriverDaemon>(ProductInfo.DaemonPipeName);
 
         /// <summary>
         /// Connect to daemon if not already connected and ensure plugins are loaded
@@ -18,9 +18,9 @@ namespace OpenTabletDriver.Console
         /// </remarks>
         public static async Task<bool> EnsureDaemonReady()
         {
-            if (!Instance.Exists("OpenTabletDriver.Daemon"))
+            if (!Instance.Exists(ProductInfo.DaemonPipeName))
             {
-                System.Console.WriteLine("OpenTabletDriver Daemon not running");
+                System.Console.WriteLine($"{ProductInfo.Name} Daemon not running");
                 return false;
             }
 

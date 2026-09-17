@@ -8,8 +8,8 @@ namespace OpenTabletDriver.UX.Controls.Generic
     {
         public StackedContent()
         {
-            this.Padding = 5;
-            this.Spacing = 5;
+            this.Padding = AppStyle.Space;
+            this.Spacing = AppStyle.Space;
             this.HorizontalContentAlignment = HorizontalAlignment.Center;
         }
 

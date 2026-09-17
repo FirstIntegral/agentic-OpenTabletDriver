@@ -12,7 +12,7 @@ namespace OpenTabletDriver.UX.Controls
         {
             this.Content = new StackLayout
             {
-                Spacing = 5,
+                Spacing = AppStyle.Space,
                 MinimumSize = new Size(300, 0),
                 Orientation = Orientation.Horizontal,
                 Items =
@@ -27,7 +27,8 @@ namespace OpenTabletDriver.UX.Controls
                         Control = advancedButton = new Button
                         {
                             Text = "...",
-                            Width = 25
+                            Width = 36,
+                            ToolTip = "Advanced binding…"
                         }
                     }
                 }

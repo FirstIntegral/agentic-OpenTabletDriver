@@ -110,7 +110,7 @@ declare -g SELF_CONTAINED="false"
 
 ### Global Descriptors
 
-OTD_NAME="OpenTabletDriver"
+OTD_NAME="agentic-OpenTabletDriver"
 OTD_LNAME="opentabletdriver"
 
 OTD_DESC="cross-platform open-source tablet driver"
@@ -465,6 +465,6 @@ Terminal=false
 Type=Application
 Categories=Settings;
 StartupNotify=true
-StartupWMClass=OpenTabletDriver.UX
+StartupWMClass=OpenTabletDriver.UX.Gtk
 EOF
 }

@@ -37,7 +37,7 @@ namespace OpenTabletDriver.UX.Controls
                 {
                     Content = settingStoreEditor = new ToggleablePluginSettingStoreEditor()
                     {
-                        Padding = 5
+                        Padding = AppStyle.Space
                     }
                 }
             };

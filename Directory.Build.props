@@ -10,6 +10,7 @@
   </PropertyGroup>
 
   <PropertyGroup Label="NuGet Package">
+    <Product>agentic-OpenTabletDriver</Product>
     <Authors>InfinityGhost;X9VoiD</Authors>
     <PackageLicenseExpression>LGPL-3.0-or-later</PackageLicenseExpression>
     <ProjectUrl>https://github.com/FirstIntegral/agentic-OpenTabletDriver</ProjectUrl>

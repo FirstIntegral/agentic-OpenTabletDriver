@@ -14,36 +14,50 @@ namespace OpenTabletDriver.UX.Controls
     {
         public TabletSwitcherPanel()
         {
-            base.Content = layout = new StackLayout
+            tabletSwitcher = new TabletSwitcher
+            {
+                Width = 280
+            };
+            commandsPanel = new Panel();
+
+            var header = new StackLayout
+            {
+                Orientation = Orientation.Horizontal,
+                VerticalContentAlignment = VerticalAlignment.Center,
+                Padding = AppStyle.HeaderPadding,
+                Spacing = AppStyle.Space,
+                BackgroundColor = SystemColors.ControlBackground
+            };
+            header.Items.Add(new ImageView
+            {
+                Image = App.Logo.WithSize(AppStyle.HeaderLogoSize, AppStyle.HeaderLogoSize)
+            });
+            header.Items.Add(new Label
+            {
+                Text = App.ProductName,
+                Font = SystemFonts.Bold(13),
+                VerticalAlignment = VerticalAlignment.Center
+            });
+            header.Items.Add(new StackLayoutItem(null, true));
+            header.Items.Add(new Label
+            {
+                Text = "Tablet",
+                VerticalAlignment = VerticalAlignment.Center
+            });
+            header.Items.Add(tabletSwitcher);
+            header.Items.Add(commandsPanel);
+
+            Content = layout = new StackLayout
             {
                 HorizontalContentAlignment = HorizontalAlignment.Stretch,
+                Spacing = 0,
                 Items =
                 {
+                    header,
                     new StackLayoutItem
                     {
                         Expand = true,
                         Control = controlPanel = new ControlPanel()
-                    },
-                    new StackLayoutItem
-                    {
-                        Control = new StackLayout
-                        {
-                            Orientation = Orientation.Horizontal,
-                            Padding = new Padding(5, 5, 0, 5),
-                            Spacing = 5,
-                            Items =
-                            {
-                                new StackLayoutItem
-                                {
-                                    Control = tabletSwitcher = new TabletSwitcher()
-                                },
-                                new StackLayoutItem(null, true),
-                                new StackLayoutItem
-                                {
-                                    Control = commandsPanel = new Panel()
-                                }
-                            }
-                        }
                     }
                 }
             };

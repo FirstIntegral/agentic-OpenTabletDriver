@@ -49,7 +49,7 @@ namespace OpenTabletDriver.UX.Windows.Plugins
                             HorizontalAlignment = HorizontalAlignment.Center,
                             Control = new Panel
                             {
-                                Padding = 5,
+                                Padding = AppStyle.Space,
                                 Content = new Label
                                 {
                                     Text = "Drag and drop plugins here to install.",

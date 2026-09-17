@@ -18,7 +18,7 @@ namespace OpenTabletDriver.UX.Controls.Output.Area
         {
             this.Content = new StackLayout
             {
-                Spacing = 5,
+                Spacing = AppStyle.Space,
                 Items =
                 {
                     new StackLayoutItem
@@ -27,7 +27,7 @@ namespace OpenTabletDriver.UX.Controls.Output.Area
                         HorizontalAlignment = HorizontalAlignment.Stretch,
                         Control = new Panel
                         {
-                            Padding = new Padding(5),
+                            Padding = new Padding(AppStyle.Space),
                             Content = Display = new AreaDisplay()
                         }
                     },
@@ -37,7 +37,7 @@ namespace OpenTabletDriver.UX.Controls.Output.Area
                         Control = settingsPanel = new StackLayout
                         {
                             Orientation = Orientation.Horizontal,
-                            Spacing = 5,
+                            Spacing = AppStyle.Space,
                             Items =
                             {
                                 new StackLayoutItem

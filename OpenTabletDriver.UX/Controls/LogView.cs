@@ -144,7 +144,7 @@ namespace OpenTabletDriver.UX.Controls
             {
                 var notify = new Notification
                 {
-                    Title = "OpenTabletDriver - " + message.Level.ToString(),
+                    Title = $"{App.ProductName} - " + message.Level.ToString(),
                     Message = message.Message,
                     ContentImage = App.Logo,
                     ID = "log-message-notification"

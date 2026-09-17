@@ -49,7 +49,7 @@ namespace OpenTabletDriver.UX.Controls.Generic
                 this.content = value;
                 base.Content = new StackLayout
                 {
-                    Spacing = 5,
+                    Spacing = AppStyle.Space,
                     Orientation = Orientation.Horizontal,
                     Items =
                     {
