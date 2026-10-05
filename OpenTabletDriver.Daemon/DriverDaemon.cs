@@ -242,6 +242,8 @@ namespace OpenTabletDriver.Daemon
                             LogPressureState(group, profile);
                         if (absoluteMode.Pointer is ITiltHandler)
                             LogTiltState(group, profile);
+                        if (absoluteMode.Pointer is IRotationHandler)
+                            LogRotationState(group, profile);
                     }
 
                     if (dev.OutputMode is RelativeOutputMode relativeMode)
@@ -254,6 +256,8 @@ namespace OpenTabletDriver.Daemon
                             LogPressureState(group, profile);
                         if (relativeMode.Pointer is ITiltHandler)
                             LogTiltState(group, profile);
+                        if (relativeMode.Pointer is IRotationHandler)
+                            LogRotationState(group, profile);
                     }
 
                     if (dev.OutputMode is { } outputMode)
@@ -689,6 +693,28 @@ namespace OpenTabletDriver.Daemon
                 throw new IOException("Device not found");
 
             return Task.FromResult(tablet.GetDeviceString((byte)index) ?? throw new InvalidOperationException($"Unable to look up device string on index {index}"));
+        }
+
+        public Task SendFeatureInit(int vid, int pid, string strInterface, byte[] initData)
+        {
+            var tablet = Driver.CompositeDeviceHub.GetDevices().FirstOrDefault(d => d.VendorID == vid && d.ProductID == pid && d.DeviceAttributes.TryGetValue("USB_INTERFACE_NUMBER", out var identifierInterface) && identifierInterface == strInterface);
+            if (tablet == null)
+                throw new IOException("Device not found");
+
+            tablet.OpenAndSendFeatureInit(initData);
+
+            return Task.CompletedTask;
+        }
+
+        public Task SendOutputInit(int vid, int pid, string strInterface, byte[] initData)
+        {
+            var tablet = Driver.CompositeDeviceHub.GetDevices().FirstOrDefault(d => d.VendorID == vid && d.ProductID == pid && d.DeviceAttributes.TryGetValue("USB_INTERFACE_NUMBER", out var identifierInterface) && identifierInterface == strInterface);
+            if (tablet == null)
+                throw new IOException("Device not found");
+
+            tablet.OpenAndSendOutputInit(initData);
+
+            return Task.CompletedTask;
         }
 
         public Task<IEnumerable<LogMessage>> GetCurrentLog()
