@@ -1,6 +1,6 @@
 # agentic-OpenTabletDriver
 
-[English](../README.md) | [한국어](README_KO.md) | [Español](README_ES.md) | Русский | [简体中文](README_CN.md) | [Français](README_FR.md) | [Deutsch](README_DE.md)
+[English](../README.md) | [한국어](README_KO.md) | [Español](README_ES.md) | Русский | [简体中文](README_CN.md) | [Français](README_FR.md) | [Deutsch](README_DE.md) | [Português-BR](README_PTBR.md) | [Tiếng Việt](README_VN.md)
 
 OpenTabletDriver — кроссплатформенный драйвер с открытым исходным кодом для графических планшетов. Целью проекта является поддержка максимального числа устройств и платформ, а также создание простого и удобного интерфейса для настройки драйвера.
 

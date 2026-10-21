@@ -76,6 +76,10 @@ namespace OpenTabletDriver.Devices.LinuxHidraw
             return new LinuxHidrawStream(this);
         }
 
+        public void OpenAndSendFeatureInit(byte[] initData) => Open().SetFeature(initData);
+
+        public void OpenAndSendOutputInit(byte[] initData) => Open().Write(initData);
+
         public string GetDeviceString(byte index) => string.Empty;
 
         internal static bool IsHidrawName(string name)

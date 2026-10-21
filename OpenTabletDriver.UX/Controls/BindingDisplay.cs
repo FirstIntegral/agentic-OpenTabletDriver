@@ -34,7 +34,7 @@ namespace OpenTabletDriver.UX.Controls
                 }
             };
 
-            mainButton.TextBinding.Bind(this.StoreBinding.Convert<string?>(s => s?.GetHumanReadableString()));
+            mainButton.TextBinding.Bind(this.StoreBinding.Convert<string?>(s => s?.GetElidedHumanReadableString(100)));
 
             mainButton.Click += async (sender, e) =>
             {
