@@ -15,10 +15,11 @@ namespace OpenTabletDriver.Desktop.Diagnostics
 {
     public class DiagnosticInfo
     {
-        public DiagnosticInfo(IEnumerable<LogMessage> log, IEnumerable<SerializedDeviceEndpoint> devices)
+        public DiagnosticInfo(IEnumerable<LogMessage> log, IEnumerable<SerializedDeviceEndpoint> devices, Settings? settings)
         {
             ConsoleLog = log;
             Devices = devices;
+            Settings = settings;
         }
 
         [JsonProperty("App Version")]
@@ -37,6 +38,9 @@ namespace OpenTabletDriver.Desktop.Diagnostics
 
         [JsonProperty("HID Devices")]
         public IEnumerable<SerializedDeviceEndpoint> Devices { private set; get; }
+
+        [JsonProperty(nameof(Settings))]
+        public Settings? Settings { get; }
 
         [JsonProperty("Console Log")]
         public IEnumerable<LogMessage> ConsoleLog { private set; get; }
